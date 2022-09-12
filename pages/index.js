@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
 
+const infuraId = "70fcbd10c1914406803f730c74d67bdc";
+
 import {
   marketplaceAddress
 } from '../config'
@@ -17,11 +19,9 @@ export default function Home() {
   }, [])
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mumbai.infura.io/v3/${infuraId}`)
     const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
     const data = await contract.fetchMarketItems()
-    console.log(data);
-    console.log(provider);
 
     /*
     *  map over items returned from smart contract and format 
