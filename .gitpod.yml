@@ -10,5 +10,5 @@ tasks:
       npm run dev
     openMode: tab-after
 ports:
-  - port: 3000-8545
+  - port: 443-8545
     visibility: public
